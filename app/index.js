@@ -2,7 +2,6 @@
 const app = require('electron').app
 const ipc = require('electron').ipcMain
 const shell = require('electron').shell
-const session = require('electron').session
 const store = require('./store')
 const createMainMenu = require('./menu')
 const createMainWindow = require('./window')
