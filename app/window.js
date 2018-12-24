@@ -1,10 +1,10 @@
 'use strict'
 const join = require('path').join
 const BrowserWindow = require('electron').BrowserWindow
-const config = require('./config')
+const store = require('./store')
 
 module.exports = function createMainWindow (handleResize, handleClosed) {
-  const lastWindowState = config.get('lastWindowState')
+  const lastWindowState = store.get('lastWindowState')
 
   const window = new BrowserWindow({
     minWidth: 615,
@@ -16,6 +16,8 @@ module.exports = function createMainWindow (handleResize, handleClosed) {
     title: 'Keep',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
       preload: `${__dirname}/browser.js`
     }
   })

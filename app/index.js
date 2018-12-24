@@ -2,7 +2,8 @@
 const app = require('electron').app
 const ipc = require('electron').ipcMain
 const shell = require('electron').shell
-const config = require('./config')
+const session = require('electron').session
+const store = require('./store')
 const createMainMenu = require('./menu')
 const createMainWindow = require('./window')
 
@@ -12,7 +13,7 @@ let mainWindow
 
 function handleResize () {
   if (!mainWindow.isFullScreen()) {
-    config.set('lastWindowState', mainWindow.getBounds())
+    store.set('lastWindowState', mainWindow.getBounds())
   }
 }
 
